@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Mode Fashion</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f7f7f7;color:#222}
+header{background:#111;color:#fff;padding:18px 16px;text-align:center;position:sticky;top:0;z-index:10}
+header h1{font-size:26px;letter-spacing:.5px}
+header p{font-size:13px;color:#ddd;margin-top:5px}
+.hero{padding:45px 18px;text-align:center;background:linear-gradient(135deg,#111,#3a3a3a);color:#fff}
+.hero h2{font-size:32px;margin-bottom:10px}.hero p{color:#ddd}
+.container{max-width:1000px;margin:auto;padding:28px 16px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 15px #0001}
+.photo{height:210px;background:#e8e8e8;display:flex;align-items:center;justify-content:center;color:#888;font-size:15px}
+.card-body{padding:17px}.card h3{font-size:20px;margin-bottom:8px}
+.price{font-size:22px;font-weight:bold;margin:8px 0 15px}
+button,.call{display:block;width:100%;border:0;border-radius:9px;padding:12px;text-align:center;font-size:16px;font-weight:bold;cursor:pointer;background:#111;color:#fff;text-decoration:none}
+.order{background:#fff;margin-top:30px;padding:22px;border-radius:14px;box-shadow:0 4px 15px #0001}
+.order h2{margin-bottom:15px}input,textarea{width:100%;padding:12px;margin:7px 0 10px;border:1px solid #ddd;border-radius:8px;font-size:15px}
+footer{text-align:center;padding:25px;background:#111;color:#fff;margin-top:30px}
+.whatsapp{background:#198754;margin-top:10px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Elite Mode Fashion</h1>
+  <p>আপনার পছন্দের ফ্যাশন, আপনার স্টাইলে</p>
+</header>
+
+<section class="hero">
+  <h2>Elite Mode Fashion</h2>
+  <p>স্টাইলিশ ফ্যাশন সেট — সাশ্রয়ী দামে</p>
+</section>
+
+<main class="container">
+  <div class="products">
+    <div class="card">
+      <div class="photo">Set 2 এর ছবি</div>
+      <div class="card-body"><h3>Set 2</h3><div class="price">৳450</div><button onclick="selectSet('Set 2 - ৳450')">অর্ডার করুন</button></div>
+    </div>
+    <div class="card">
+      <div class="photo">Set 3 এর ছবি</div>
+      <div class="card-body"><h3>Set 3</h3><div class="price">৳499</div><button onclick="selectSet('Set 3 - ৳499')">অর্ডার করুন</button></div>
+    </div>
+    <div class="card">
+      <div class="photo">Set 4 এর ছবি</div>
+      <div class="card-body"><h3>Set 4</h3><div class="price">৳599</div><button onclick="selectSet('Set 4 - ৳599')">অর্ডার করুন</button></div>
+    </div>
+    <div class="card">
+      <div class="photo">Set 5 এর ছবি</div>
+      <div class="card-body"><h3>Set 5</h3><div class="price">৳399</div><button onclick="selectSet('Set 5 - ৳399')">অর্ডার করুন</button></div>
+    </div>
+  </div>
+
+  <section class="order" id="order">
+    <h2>অর্ডার করুন</h2>
+    <input id="name" placeholder="আপনার নাম">
+    <input id="phone" placeholder="মোবাইল নম্বর">
+    <input id="address" placeholder="ডেলিভারি ঠিকানা">
+    <input id="product" placeholder="যে সেটটি নিতে চান">
+    <button onclick="sendOrder()">WhatsApp-এ অর্ডার পাঠান</button>
+    <a class="call" style="margin-top:10px" href="tel:01337962722">📞 কল করুন: 01337962722</a>
+  </section>
+</main>
+
+<footer>© 2026 Elite Mode Fashion • 01337962722</footer>
+
+<script>
+function selectSet(set){
+  document.getElementById('product').value=set;
+  document.getElementById('order').scrollIntoView({behavior:'smooth'});
+}
+function sendOrder(){
+  const n=document.getElementById('name').value.trim();
+  const p=document.getElementById('phone').value.trim();
+  const a=document.getElementById('address').value.trim();
+  const pr=document.getElementById('product').value.trim();
+  if(!n||!p||!a||!pr){alert('সব তথ্য পূরণ করুন।');return}
+  const msg=`আসসালামু আলাইকুম, আমি Elite Mode Fashion থেকে অর্ডার করতে চাই।%0A%0Aনাম: ${encodeURIComponent(n)}%0Aফোন: ${encodeURIComponent(p)}%0Aঠিকানা: ${encodeURIComponent(a)}%0Aপণ্য: ${encodeURIComponent(pr)}`;
+  window.open(`https://wa.me/8801337962722?text=${msg}`,'_blank');
+}
+</script>
+</body>
+</html>
